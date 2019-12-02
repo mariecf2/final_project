@@ -12,7 +12,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.start_screen);
+
+        Button start = findViewById(R.id.button);
+        start.setOnClickListener(unused -> onClickStart());
 
         Button donezo = findViewById(R.id.donezoButton);
         ImageButton redButton = findViewById(R.id.redButton);
@@ -28,5 +31,12 @@ public class MainActivity extends AppCompatActivity {
         ImageView hat = findViewById(R.id.hat);
         ImageView boots = findViewById(R.id.boots);
         ImageView mic = findViewById(R.id.mic);
+
+        //redButton.setOnClickListener();
+        //whiteButton.setOnClickListener();
+
+    }
+    protected void onClickStart() {
+        setContentView(R.layout.activity_main);
     }
 }
