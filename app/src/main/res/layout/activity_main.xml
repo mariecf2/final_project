@@ -13,11 +13,28 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="518dp">
+            android:layout_height="490dp"
+            tools:layout_editor_absoluteX="-10dp"
+            tools:layout_editor_absoluteY="-29dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/donezoButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="300dp"
+                    android:layout_marginLeft="300dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Done"
+                    app:layout_constraintBottom_toTopOf="@+id/dog"
+                    app:layout_constraintEnd_toStartOf="@+id/dog"
+                    app:layout_constraintHorizontal_bias="0.06"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <ImageView
                     android:id="@+id/dog"
@@ -33,7 +50,7 @@
                     app:srcCompat="@drawable/chuchu" />
 
                 <ImageView
-                    android:id="@+id/whiteshirt"
+                    android:id="@+id/whiteShirt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
@@ -42,8 +59,10 @@
                     android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.862"
                     app:srcCompat="@drawable/whiteshirt" />
 
                 <ImageView
@@ -53,7 +72,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="80dp"
-                    android:visibility="visible"
+                    android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -67,13 +86,13 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="80dp"
-                    android:visibility="invisible"
+                    android:visibility="visible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/blueshirt"
-                    tools:visibility="invisible" />
+                    tools:visibility="visible" />
 
                 <ImageView
                     android:id="@+id/boots"
@@ -117,33 +136,60 @@
 
         </FrameLayout>
 
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="61dp"
-            android:orientation="horizontal">
+            android:layout_height="69dp">
 
-            <ImageButton
-                android:id="@+id/bluebutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/blueicon" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:visibility="invisible">
 
-            <ImageButton
-                android:id="@+id/redButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/redicon" />
+                <ImageButton
+                    android:id="@+id/instagramButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="79dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/instagramicon" />
 
-            <ImageButton
-                android:id="@+id/whiteButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/whiteicon" />
+                <ImageButton
+                    android:id="@+id/photosButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/photosicon" />
+            </LinearLayout>
 
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="61dp"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <ImageButton
+                    android:id="@+id/bluebutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/blueicon" />
+
+                <ImageButton
+                    android:id="@+id/redButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/redicon" />
+
+                <ImageButton
+                    android:id="@+id/whiteButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/whiteicon" />
+
+            </LinearLayout>
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -171,26 +217,6 @@
                 android:layout_weight="1"
                 app:srcCompat="@drawable/micicon" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/instagramButton"
-                android:layout_width="wrap_content"
-                android:layout_height="79dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/instagramicon" />
-
-            <ImageButton
-                android:id="@+id/photosButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/photosicon" />
         </LinearLayout>
 
     </LinearLayout>
