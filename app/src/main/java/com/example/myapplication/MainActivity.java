@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -17,7 +18,15 @@ public class MainActivity extends AppCompatActivity {
         Button start = findViewById(R.id.button);
         start.setOnClickListener(unused -> onClickStart());
 
+
+    }
+    protected void onClickStart() {
+        setContentView(R.layout.activity_main);
+    }
+
+    protected void ChuchuActivity() {
         Button donezo = findViewById(R.id.donezoButton);
+        Button back = findViewById(R.id.startzoButton);
         ImageButton redButton = findViewById(R.id.redButton);
         ImageButton blueButton = findViewById(R.id.bluebutton);
         ImageButton whiteButton = findViewById(R.id.whiteButton);
@@ -32,11 +41,13 @@ public class MainActivity extends AppCompatActivity {
         ImageView boots = findViewById(R.id.boots);
         ImageView mic = findViewById(R.id.mic);
 
+        back.setOnClickListener(unused -> onClickBack());
+
         //redButton.setOnClickListener();
         //whiteButton.setOnClickListener();
-
     }
-    protected void onClickStart() {
-        setContentView(R.layout.activity_main);
+
+    protected void onClickBack() {
+        setContentView(R.layout.start_screen);
     }
 }
