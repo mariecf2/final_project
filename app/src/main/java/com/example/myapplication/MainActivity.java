@@ -50,14 +50,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onClickStart() {
         setContentView(R.layout.activity_main);
 
+        //top buttons
         donezo = findViewById(R.id.donezoButton);
         back = findViewById(R.id.startzoButton);
+        //shirt buttons
         redButton = findViewById(R.id.redButton);
         blueButton = findViewById(R.id.bluebutton);
         whiteButton = findViewById(R.id.whiteButton);
+        //misc buttons
         hatButton = findViewById(R.id.hatButton);
         bootButton = findViewById(R.id.bootButton);
         micButton = findViewById(R.id.micButton);
+        //images on dog
         dog = findViewById(R.id.dog);
         redShirt = findViewById(R.id.redShirt);
         blueShirt = findViewById(R.id.blueShirt);
@@ -65,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         hat = findViewById(R.id.hat);
         boots = findViewById(R.id.boots);
         mic = findViewById(R.id.mic);
+        //layouts
         shareLayout = findViewById(R.id.shareLayout);
         shirtLayout = findViewById(R.id.shirtLayout);
         miscLayout = findViewById(R.id.miscLayout);
@@ -84,21 +89,16 @@ public class MainActivity extends AppCompatActivity {
         mic.setVisibility(View.INVISIBLE);
         //chuchu is naked.
 
+        back.setOnClickListener(unused -> onClickBack());
+
         putClothesOnChuchu();
 
     }
-
-    protected void ChuchuActivity() {
-
-
-        back.setOnClickListener(unused -> onClickBack());
-
-        //redButton.setOnClickListener();
-        //whiteButton.setOnClickListener();
-    }
-
     protected void onClickBack() {
         setContentView(R.layout.start_screen);
+        Button start = findViewById(R.id.button);
+        start.setOnClickListener(unused -> onClickStart());
+        System.out.println("Back button clicked");
     }
     protected void putClothesOnChuchu() {
         redButton.setOnClickListener(unused -> {
@@ -190,6 +190,13 @@ public class MainActivity extends AppCompatActivity {
             shareLayout.setVisibility(View.INVISIBLE);
         });
 
+        instagramButton.setOnClickListener(unused -> {
+            System.out.println("instagram button clicked");
+        });
+
+        photosButton.setOnClickListener(unused -> {
+            System.out.println("photos button clicked");
+        });
     }
 
 
