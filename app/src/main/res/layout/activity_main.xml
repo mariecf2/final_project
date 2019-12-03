@@ -67,16 +67,18 @@
                     android:id="@+id/whiteShirt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="80dp"
-                    android:visibility="invisible"
+                    android:layout_marginStart="90dp"
+                    android:layout_marginLeft="90dp"
+                    android:layout_marginTop="300dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:visibility="visible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintHorizontal_bias="0.81"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.862"
+                    app:layout_constraintVertical_bias="0.87"
                     app:srcCompat="@drawable/whiteshirt" />
 
                 <ImageView
@@ -100,13 +102,13 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="80dp"
-                    android:visibility="visible"
+                    android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/blueshirt"
-                    tools:visibility="visible" />
+                    tools:visibility="invisible" />
 
                 <ImageView
                     android:id="@+id/boots"
