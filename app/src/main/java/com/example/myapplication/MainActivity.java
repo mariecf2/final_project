@@ -29,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout shareLayout;
     LinearLayout shirtLayout;
     LinearLayout miscLayout;
+    ImageButton roundBack;
+    ImageButton instagramButton;
+    ImageButton photosButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -160,14 +163,35 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         donezo.setOnClickListener(unused -> {
-            donezo.setVisibility(View.INVISIBLE);
-            back.setVisibility(View.INVISIBLE);
-            shirtLayout.setVisibility(View.INVISIBLE);
-            miscLayout.setVisibility(View.INVISIBLE);
-            shareLayout.setVisibility(View.VISIBLE);
+            onClickDone();
         });
 
     }
+
+    protected void onClickDone() {
+        //"switch screen"
+        donezo.setVisibility(View.INVISIBLE);
+        back.setVisibility(View.INVISIBLE);
+        shirtLayout.setVisibility(View.INVISIBLE);
+        miscLayout.setVisibility(View.INVISIBLE);
+        shareLayout.setVisibility(View.VISIBLE);
+
+        //initialize buttons
+        roundBack = findViewById(R.id.roundBack);
+        instagramButton = findViewById(R.id.instagramButton);
+        photosButton = findViewById(R.id.photosButton);
+
+        roundBack.setOnClickListener(unused -> {
+            //"switch screen" back to how it was
+            donezo.setVisibility(View.VISIBLE);
+            back.setVisibility(View.VISIBLE);
+            shirtLayout.setVisibility(View.VISIBLE);
+            miscLayout.setVisibility(View.VISIBLE);
+            shareLayout.setVisibility(View.INVISIBLE);
+        });
+
+    }
+
 
 
 }
