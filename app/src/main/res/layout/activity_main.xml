@@ -157,10 +157,18 @@
             android:layout_height="69dp">
 
             <LinearLayout
+                android:id="@+id/shareLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:visibility="invisible">
+
+                <ImageView
+                    android:id="@+id/roundBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/back" />
 
                 <ImageButton
                     android:id="@+id/instagramButton"
@@ -178,6 +186,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/shirtLayout"
                 android:layout_width="match_parent"
                 android:layout_height="61dp"
                 android:orientation="horizontal"
@@ -208,6 +217,7 @@
         </FrameLayout>
 
         <LinearLayout
+            android:id="@+id/miscLayout"
             android:layout_width="match_parent"
             android:layout_height="90dp"
             android:orientation="horizontal">

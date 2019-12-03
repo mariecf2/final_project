@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -25,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
     ImageView hat;
     ImageView boots;
     ImageView mic;
+    LinearLayout shareLayout;
+    LinearLayout shirtLayout;
+    LinearLayout miscLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +62,16 @@ public class MainActivity extends AppCompatActivity {
         hat = findViewById(R.id.hat);
         boots = findViewById(R.id.boots);
         mic = findViewById(R.id.mic);
+        shareLayout = findViewById(R.id.shareLayout);
+        shirtLayout = findViewById(R.id.shirtLayout);
+        miscLayout = findViewById(R.id.miscLayout);
+
+        //show clothing layouts
+        shirtLayout.setVisibility(View.VISIBLE);
+        miscLayout.setVisibility(View.VISIBLE);
+
+        //don't show share layout
+        shareLayout.setVisibility(View.INVISIBLE);
 
         redShirt.setVisibility(View.INVISIBLE);
         blueShirt.setVisibility(View.INVISIBLE);
@@ -145,6 +159,14 @@ public class MainActivity extends AppCompatActivity {
                 mic.setVisibility(View.VISIBLE);
             }
         });
+        donezo.setOnClickListener(unused -> {
+            donezo.setVisibility(View.INVISIBLE);
+            back.setVisibility(View.INVISIBLE);
+            shirtLayout.setVisibility(View.INVISIBLE);
+            miscLayout.setVisibility(View.INVISIBLE);
+            shareLayout.setVisibility(View.VISIBLE);
+        });
+
     }
 
 
