@@ -10,29 +10,55 @@ import android.widget.ImageView;
 
 
 public class MainActivity extends AppCompatActivity {
-    Button donezo = findViewById(R.id.donezoButton);
-    Button back = findViewById(R.id.startzoButton);
-    ImageButton redButton = findViewById(R.id.redButton);
-    ImageButton blueButton = findViewById(R.id.bluebutton);
-    ImageButton whiteButton = findViewById(R.id.whiteButton);
-    ImageButton hatButton = findViewById(R.id.hatButton);
-    ImageButton bootButton = findViewById(R.id.bootButton);
-    ImageButton micButton = findViewById(R.id.micButton);
-    ImageView dog = findViewById(R.id.dog);
-    ImageView redShirt = findViewById(R.id.redShirt);
-    ImageView blueShirt = findViewById(R.id.blueShirt);
-    ImageView whiteShirt = findViewById(R.id.whiteShirt);
-    ImageView hat = findViewById(R.id.hat);
-    ImageView boots = findViewById(R.id.boots);
-    ImageView mic = findViewById(R.id.mic);
+    Button donezo;
+    Button back;
+    ImageButton redButton;
+    ImageButton blueButton;
+    ImageButton whiteButton;
+    ImageButton hatButton;
+    ImageButton bootButton;
+    ImageButton micButton;
+    ImageView dog;
+    ImageView redShirt;
+    ImageView blueShirt;
+    ImageView whiteShirt;
+    ImageView hat;
+    ImageView boots;
+    ImageView mic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_screen);
 
+
         Button start = findViewById(R.id.button);
         start.setOnClickListener(unused -> onClickStart());
+
+        //chuchu is naked.
+
+
+
+    }
+    protected void onClickStart() {
+        setContentView(R.layout.activity_main);
+
+        donezo = findViewById(R.id.donezoButton);
+        back = findViewById(R.id.startzoButton);
+        redButton = findViewById(R.id.redButton);
+        blueButton = findViewById(R.id.bluebutton);
+        whiteButton = findViewById(R.id.whiteButton);
+        hatButton = findViewById(R.id.hatButton);
+        bootButton = findViewById(R.id.bootButton);
+        micButton = findViewById(R.id.micButton);
+        dog = findViewById(R.id.dog);
+        redShirt = findViewById(R.id.redShirt);
+        blueShirt = findViewById(R.id.blueShirt);
+        whiteShirt = findViewById(R.id.whiteShirt);
+        hat = findViewById(R.id.hat);
+        boots = findViewById(R.id.boots);
+        mic = findViewById(R.id.mic);
+
         redShirt.setVisibility(View.INVISIBLE);
         blueShirt.setVisibility(View.INVISIBLE);
         whiteShirt.setVisibility(View.INVISIBLE);
@@ -41,11 +67,8 @@ public class MainActivity extends AppCompatActivity {
         mic.setVisibility(View.INVISIBLE);
         //chuchu is naked.
 
+        putClothesOnChuchu();
 
-
-    }
-    protected void onClickStart() {
-        setContentView(R.layout.activity_main);
     }
 
     protected void ChuchuActivity() {
@@ -60,9 +83,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onClickBack() {
         setContentView(R.layout.start_screen);
     }
-    protected void putClothesonChuchu() {
+    protected void putClothesOnChuchu() {
         redButton.setOnClickListener(unused -> {
-            redShirt.setVisibility(View.VISIBLE);
+            if (redShirt.getVisibility() == View.VISIBLE) {
+                redShirt.setVisibility(View.INVISIBLE);
+            } else {
+                redShirt.setVisibility(View.VISIBLE);
+            }
             if (whiteShirt.getVisibility() == View.VISIBLE) {
                 whiteShirt.setVisibility(View.INVISIBLE);
             }
@@ -71,7 +98,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         blueButton.setOnClickListener(unused -> {
-            blueShirt.setVisibility(View.VISIBLE);
+            if (blueShirt.getVisibility() == View.VISIBLE) {
+                blueShirt.setVisibility(View.INVISIBLE);
+            } else {
+                blueShirt.setVisibility(View.VISIBLE);
+            }
             if (whiteShirt.getVisibility() == View.VISIBLE) {
                 whiteShirt.setVisibility(View.INVISIBLE);
             }
@@ -80,7 +111,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         whiteButton.setOnClickListener(unused -> {
-            whiteShirt.setVisibility(View.VISIBLE);
+            if (whiteShirt.getVisibility() == View.VISIBLE) {
+                whiteShirt.setVisibility(View.INVISIBLE);
+            } else {
+                whiteShirt.setVisibility(View.VISIBLE);
+            }
             if (redShirt.getVisibility() == View.VISIBLE) {
                 redShirt.setVisibility(View.INVISIBLE);
             }
@@ -88,15 +123,28 @@ public class MainActivity extends AppCompatActivity {
                 blueShirt.setVisibility(View.INVISIBLE);
             }
         });
-        hatButton.setOnClickListener(unused ->
-                hat.setVisibility(View.VISIBLE));
-        bootButton.setOnClickListener(unused ->
-                boots.setVisibility(View.VISIBLE));
-        micButton.setOnClickListener(unused ->
-                mic.setVisibility(View.VISIBLE));
+        hatButton.setOnClickListener(unused -> {
+            if (hat.getVisibility() == View.VISIBLE) {
+                hat.setVisibility(View.INVISIBLE);
+            } else {
+                hat.setVisibility(View.VISIBLE);
+            }
 
-
-
+        });
+        bootButton.setOnClickListener(unused -> {
+            if (boots.getVisibility() == View.VISIBLE) {
+                boots.setVisibility(View.INVISIBLE);
+            } else {
+                boots.setVisibility(View.VISIBLE);
+            }
+        });
+        micButton.setOnClickListener(unused -> {
+            if (mic.getVisibility() == View.VISIBLE) {
+                mic.setVisibility(View.INVISIBLE);
+            } else {
+                mic.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
 
