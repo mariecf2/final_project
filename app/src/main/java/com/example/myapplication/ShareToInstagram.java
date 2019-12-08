@@ -19,9 +19,6 @@ public class ShareToInstagram {
         mediaPath = setMediaPath;
         context = setContext;
     }
-    /* public void setInstagramContext(Context context) {
-        this.context = context;
-    } */
 
     public void onClickInsta() {
         System.out.println("In OnClickInsta()");
