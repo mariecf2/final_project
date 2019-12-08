@@ -201,35 +201,9 @@ public class MainActivity extends AppCompatActivity {
             shareLayout.setVisibility(View.INVISIBLE);
         });
 
-        type = "image/*";
-        filename = "/myPhoto.jpg";
-        mediaPath = Environment.getExternalStorageDirectory() + filename;
-
-        createInstagramIntent(type, mediaPath);
-
-        private void createInstagramIntent(String type, String mediaPath) {
-
-            // Create the new Intent using the 'Send' action.
-            Intent share = new Intent(Intent.ACTION_SEND);
-
-            // Set the MIME type
-            share.setType(type);
-
-            // Create the URI from the media
-            File media = new File(mediaPath);
-            Uri uri = Uri.fromFile(media);
-
-            // Add the URI to the Intent.
-            share.putExtra(Intent.EXTRA_STREAM, uri);
-
-            // Broadcast the Intent.
-            startActivity(Intent.createChooser(share, "Share to"));
-        }
-
-
         instagramButton.setOnClickListener(unused -> {
             ShareToInstagram aah = new ShareToInstagram("image/*", "/myPhoto.jpg",
-                    Environment.getExternalStorageDirectory() + "/myPhoto.jpg");
+                    Environment.getExternalStorageDirectory() + "/myPhoto.jpg", this);
             System.out.println("instagram button clicked");
             aah.onClickInsta();
         });

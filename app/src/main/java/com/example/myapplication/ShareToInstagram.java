@@ -1,8 +1,9 @@
 package com.example.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Environment;
+//import android.os.Environment;
 
 import java.io.File;
 
@@ -10,11 +11,13 @@ public class ShareToInstagram {
     String type;
     String filename;
     String mediaPath;
+    Context context;
 
-    ShareToInstagram(String setType, String setFilename, String setMediaPath) {
+    ShareToInstagram(String setType, String setFilename, String setMediaPath, Context setContext) {
         type = setType;
         filename = setFilename;
         mediaPath = setMediaPath;
+        context = setContext;
     }
 
     public void onClickInsta() {
@@ -40,6 +43,6 @@ public class ShareToInstagram {
         share.putExtra(Intent.EXTRA_STREAM, uri);
 
         // Broadcast the Intent.
-        //startActivity(Intent.createChooser(share, "Share to"));
+        context.startActivity(Intent.createChooser(share, "Share to"));
     }
 }
