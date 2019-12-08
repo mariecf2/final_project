@@ -17,9 +17,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -211,17 +214,11 @@ public class MainActivity extends AppCompatActivity {
             chuchuLayout.buildDrawingCache(true);
             Bitmap chuchu = Bitmap.createBitmap(chuchuLayout.getDrawingCache());
             chuchuLayout.setDrawingCacheEnabled(false);
-            try {
-                chuchu.compress(Bitmap.CompressFormat.JPEG, 95,
-                        new FileOutputStream("/myPhoto.jpg"));
-            }
-            catch(Exception e) {
-                e.printStackTrace();
-                System.out.println("chuchu cannot be compressed. he is too strong");
-            }
 
-            ShareToInstagram aah = new ShareToInstagram("image/*", "/myPhoto.jpg",
-                    Environment.getExternalStorageDirectory() + "/myPhoto.jpg", this);
+            storeScreenshot(chuchu, "/myPhoto.jpeg");
+
+            ShareToInstagram aah = new ShareToInstagram("image/*", "/myPhoto.jpeg",
+                    Environment.getExternalStorageDirectory() + "/myPhoto.jpeg", this);
             System.out.println("instagram button clicked");
             aah.onClickInsta();
         });
@@ -230,6 +227,33 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("photos button clicked");
         });
 
+    }
+
+    public void storeScreenshot(Bitmap bitmap, String filename) {
+        String path = Environment.getExternalStorageDirectory().toString() + "/" + filename;
+        OutputStream out = null;
+        File imageFile = new File(path);
+
+        try {
+            out = new FileOutputStream(imageFile);
+            // choose JPEG format
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
+            out.flush();
+        } catch (FileNotFoundException e) {
+            // manage exception ...
+        } catch (IOException e) {
+            // manage exception ...
+        } finally {
+            try {
+                if (out != null) {
+                    out.close();
+                }
+
+            } catch (Exception exc) {
+                System.out.println("exception caught");
+            }
+
+        }
     }
 
 }
