@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -17,6 +18,8 @@ import android.net.Uri;
 import android.os.Environment;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -203,6 +206,20 @@ public class MainActivity extends AppCompatActivity {
         });
 
         instagramButton.setOnClickListener(unused -> {
+            ConstraintLayout chuchuLayout = findViewById(R.id.ChuchuLayout);
+            chuchuLayout.setDrawingCacheEnabled(true);
+            chuchuLayout.buildDrawingCache(true);
+            Bitmap chuchu = Bitmap.createBitmap(chuchuLayout.getDrawingCache());
+            chuchuLayout.setDrawingCacheEnabled(false);
+            try {
+                chuchu.compress(Bitmap.CompressFormat.JPEG, 95,
+                        new FileOutputStream("/myPhoto.jpg"));
+            }
+            catch(Exception e) {
+                e.printStackTrace();
+                System.out.println("chuchu cannot be compressed. he is too strong");
+            }
+
             ShareToInstagram aah = new ShareToInstagram("image/*", "/myPhoto.jpg",
                     Environment.getExternalStorageDirectory() + "/myPhoto.jpg", this);
             System.out.println("instagram button clicked");
@@ -212,11 +229,6 @@ public class MainActivity extends AppCompatActivity {
         photosButton.setOnClickListener(unused -> {
             System.out.println("photos button clicked");
         });
-
-    }
-
-    protected static Bitmap getScreenShot(View view) {
-
 
     }
 
