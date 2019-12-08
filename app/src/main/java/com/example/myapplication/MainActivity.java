@@ -6,6 +6,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -57,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_screen);
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
 
 
         Button start = findViewById(R.id.button);
@@ -253,7 +256,8 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println("exception caught");
             }
 
-        }
+        } 
     }
+
 
 }

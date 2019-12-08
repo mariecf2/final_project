@@ -40,6 +40,8 @@ public class ShareToInstagram {
 
         // Add the URI to the Intent.
         share.putExtra(Intent.EXTRA_STREAM, uri);
+        share.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
 
         // Broadcast the Intent.
         context.startActivity(Intent.createChooser(share, "Share to"));
