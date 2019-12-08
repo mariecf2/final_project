@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
@@ -211,8 +212,12 @@ public class MainActivity extends AppCompatActivity {
         photosButton.setOnClickListener(unused -> {
             System.out.println("photos button clicked");
         });
+
     }
 
+    protected static Bitmap getScreenShot(View view) {
 
+
+    }
 
 }
