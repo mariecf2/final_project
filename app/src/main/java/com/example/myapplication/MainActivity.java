@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -162,9 +163,7 @@ public class MainActivity extends AppCompatActivity {
                 mic.setVisibility(View.VISIBLE);
             }
         });
-        donezo.setOnClickListener(unused -> {
-            onClickDone();
-        });
+        donezo.setOnClickListener(unused -> onClickDone());
 
     }
 
@@ -191,7 +190,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         instagramButton.setOnClickListener(unused -> {
+            ShareToInstagram aah = new ShareToInstagram("image/*", "/myPhoto.jpg",
+                    Environment.getExternalStorageDirectory() + "/myPhoto.jpg");
             System.out.println("instagram button clicked");
+            aah.onClickInsta();
         });
 
         photosButton.setOnClickListener(unused -> {
