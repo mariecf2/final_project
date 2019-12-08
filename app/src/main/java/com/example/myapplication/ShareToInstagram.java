@@ -21,8 +21,7 @@ public class ShareToInstagram {
         System.out.println("In OnClickInsta()");
         createInstagramIntent(type, mediaPath);
     }
-
-
+    
 
     private void createInstagramIntent(String type, String mediaPath){
         System.out.println("In intent code bit");
