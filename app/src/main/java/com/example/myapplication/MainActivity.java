@@ -11,11 +11,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Environment;
-
-import java.io.File;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -205,10 +200,10 @@ public class MainActivity extends AppCompatActivity {
         filename = "/myPhoto.jpg";
         mediaPath = Environment.getExternalStorageDirectory() + filename;
 
-
         instagramButton.setOnClickListener(unused -> {
             ShareToInstagram aah = new ShareToInstagram("image/*", "/myPhoto.jpg",
                     Environment.getExternalStorageDirectory() + "/myPhoto.jpg");
+            aah.setInstagramContext(this);
             System.out.println("instagram button clicked");
             aah.onClickInsta();
         });
