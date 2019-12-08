@@ -10,6 +10,13 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Environment;
+
+import java.io.File;
+
 
 public class MainActivity extends AppCompatActivity {
     Button donezo;
@@ -33,6 +40,11 @@ public class MainActivity extends AppCompatActivity {
     ImageButton roundBack;
     ImageButton instagramButton;
     ImageButton photosButton;
+
+    String type;
+    String filename;
+    String mediaPath;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -188,6 +200,32 @@ public class MainActivity extends AppCompatActivity {
             miscLayout.setVisibility(View.VISIBLE);
             shareLayout.setVisibility(View.INVISIBLE);
         });
+
+        type = "image/*";
+        filename = "/myPhoto.jpg";
+        mediaPath = Environment.getExternalStorageDirectory() + filename;
+
+        createInstagramIntent(type, mediaPath);
+
+        private void createInstagramIntent(String type, String mediaPath) {
+
+            // Create the new Intent using the 'Send' action.
+            Intent share = new Intent(Intent.ACTION_SEND);
+
+            // Set the MIME type
+            share.setType(type);
+
+            // Create the URI from the media
+            File media = new File(mediaPath);
+            Uri uri = Uri.fromFile(media);
+
+            // Add the URI to the Intent.
+            share.putExtra(Intent.EXTRA_STREAM, uri);
+
+            // Broadcast the Intent.
+            startActivity(Intent.createChooser(share, "Share to"));
+        }
+
 
         instagramButton.setOnClickListener(unused -> {
             ShareToInstagram aah = new ShareToInstagram("image/*", "/myPhoto.jpg",
