@@ -13,14 +13,15 @@ public class ShareToInstagram {
     String mediaPath;
     Context context;
 
-    ShareToInstagram(String setType, String setFilename, String setMediaPath) {
+    ShareToInstagram(String setType, String setFilename, String setMediaPath, Context setContext) {
         type = setType;
         filename = setFilename;
         mediaPath = setMediaPath;
+        context = setContext;
     }
-    public void setInstagramContext(Context context) {
+    /* public void setInstagramContext(Context context) {
         this.context = context;
-    }
+    } */
 
     public void onClickInsta() {
         System.out.println("In OnClickInsta()");

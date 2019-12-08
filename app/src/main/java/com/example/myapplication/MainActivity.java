@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
 
         instagramButton.setOnClickListener(unused -> {
             ShareToInstagram aah = new ShareToInstagram("image/*", "/myPhoto.jpg",
-                    Environment.getExternalStorageDirectory() + "/myPhoto.jpg");
+                    Environment.getExternalStorageDirectory() + "/myPhoto.jpg", this);
             aah.setInstagramContext(this);
             System.out.println("instagram button clicked");
             aah.onClickInsta();
