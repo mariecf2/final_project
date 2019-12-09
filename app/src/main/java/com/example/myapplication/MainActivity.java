@@ -1,22 +1,26 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
+//import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
+//import android.nfc.Tag;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
+//import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Environment;
+//import android.content.Context;
+//import android.content.Intent;
+//import android.net.Uri;
+//import android.os.Environment;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -24,6 +28,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.logging.Level;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -45,13 +50,10 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout shareLayout;
     LinearLayout shirtLayout;
     LinearLayout miscLayout;
+    LinearLayout chuchuLayout;
     ImageButton roundBack;
-    ImageButton instagramButton;
-    ImageButton photosButton;
+    Button instagramButton;
 
-    String type;
-    String filename;
-    String mediaPath;
 
 
     @Override
@@ -65,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
         Button start = findViewById(R.id.button);
         start.setOnClickListener(unused -> onClickStart());
 
-        //chuchu is naked.
 
 
 
@@ -96,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         shareLayout = findViewById(R.id.shareLayout);
         shirtLayout = findViewById(R.id.shirtLayout);
         miscLayout = findViewById(R.id.miscLayout);
+        chuchuLayout = findViewById(R.id.ChuchuLayout);
 
         //show clothing layouts
         shirtLayout.setVisibility(View.VISIBLE);
@@ -200,7 +202,6 @@ public class MainActivity extends AppCompatActivity {
         //initialize buttons
         roundBack = findViewById(R.id.roundBack);
         instagramButton = findViewById(R.id.instagramButton);
-        photosButton = findViewById(R.id.photosButton);
 
         roundBack.setOnClickListener(unused -> {
             //"switch screen" back to how it was
@@ -212,52 +213,34 @@ public class MainActivity extends AppCompatActivity {
         });
 
         instagramButton.setOnClickListener(unused -> {
-            ConstraintLayout chuchuLayout = findViewById(R.id.ChuchuLayout);
+            System.out.println("instagram button clicked");
             chuchuLayout.setDrawingCacheEnabled(true);
             chuchuLayout.buildDrawingCache(true);
-            Bitmap chuchu = Bitmap.createBitmap(chuchuLayout.getDrawingCache());
+            Bitmap chuchuBitmap = Bitmap.createBitmap(chuchuLayout.getDrawingCache());
             chuchuLayout.setDrawingCacheEnabled(false);
 
-            storeScreenshot(chuchu, "/myPhoto.jpeg");
+            String path = Environment.getExternalStorageDirectory().toString() + "/myPhoto.jpg";
 
-            ShareToInstagram aah = new ShareToInstagram("image/*", "/myPhoto.jpeg",
-                    Environment.getExternalStorageDirectory() + "/myPhoto.jpeg", this);
+            try {
+                FileOutputStream outputStream = new FileOutputStream(new File(path));
+                chuchuBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+                outputStream.flush();
+                outputStream.close();
+                chuchuBitmap.recycle();
+            } catch (FileNotFoundException e) {
+                System.out.println("File not found");
+            } catch (IOException e) {
+                System.out.println("IO Exception");
+            }
+
+            System.out.println("Past storeScreenshot");
+
+
+            ShareToInstagram aah = new ShareToInstagram(path, this);
             System.out.println("instagram button clicked");
             aah.onClickInsta();
         });
 
-        photosButton.setOnClickListener(unused -> {
-            System.out.println("photos button clicked");
-        });
-
     }
-
-    public void storeScreenshot(Bitmap bitmap, String filename) {
-        String path = Environment.getExternalStorageDirectory().toString() + "/" + filename;
-        OutputStream out = null;
-        File imageFile = new File(path);
-
-        try {
-            out = new FileOutputStream(imageFile);
-            // choose JPEG format
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
-            out.flush();
-        } catch (FileNotFoundException e) {
-            // manage exception ...
-        } catch (IOException e) {
-            // manage exception ...
-        } finally {
-            try {
-                if (out != null) {
-                    out.close();
-                }
-
-            } catch (Exception exc) {
-                System.out.println("exception caught");
-            }
-
-        } 
-    }
-
 
 }

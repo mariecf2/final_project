@@ -8,40 +8,29 @@ import android.net.Uri;
 import java.io.File;
 
 public class ShareToInstagram {
-    String type;
-    String filename;
     String mediaPath;
     Context context;
 
-    ShareToInstagram(String setType, String setFilename, String setMediaPath, Context setContext) {
-        type = setType;
-        filename = setFilename;
+    ShareToInstagram(String setMediaPath, Context setContext) {
         mediaPath = setMediaPath;
         context = setContext;
     }
 
     public void onClickInsta() {
         System.out.println("In OnClickInsta()");
-        createInstagramIntent(type, mediaPath);
+        createInstagramIntent(mediaPath);
     }
 
 
-    private void createInstagramIntent(String type, String mediaPath){
+    private void createInstagramIntent(String mediaPath){
         System.out.println("In intent code bit");
         // Create the new Intent using the 'Send' action.
-        Intent share = new Intent(Intent.ACTION_SEND);
+        Intent share = new Intent();
+        share.setAction(Intent.ACTION_SEND);
+        share.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + mediaPath));
+        share.setType("image/jpeg");
 
-        // Set the MIME type
-        share.setType(type);
-
-        // Create the URI from the media
-        File media = new File(mediaPath);
-        Uri uri = Uri.fromFile(media);
-
-        // Add the URI to the Intent.
-        share.putExtra(Intent.EXTRA_STREAM, uri);
         share.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-
 
         // Broadcast the Intent.
         context.startActivity(Intent.createChooser(share, "Share to"));
